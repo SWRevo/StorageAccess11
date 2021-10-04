@@ -50,8 +50,7 @@ if(SDK_INT >= Build.VERSION_CODES.R) {
                             intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
                             startActivityForResult(intent, SETTINGS_PERMISSION_ANDROID11);
                         }
-                    })
-                    .show();
+                    }).show();
         }
     }
     
@@ -117,15 +116,8 @@ if(SDK_INT >= Build.VERSION_CODES.R) {
                             askPermissionSDK30();
                         } else {
                             permissionCount++;
-                            final int takeFlags = i.getFlags()
-                                    & (Intent.FLAG_GRANT_READ_URI_PERMISSION
-                                    | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-
-                            getContentResolver()
-                                    .takePersistableUriPermission(
-                                            muri,
-                                            takeFlags
-                                    );
+                            final int takeFlags = i.getFlags()&(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                            getContentResolver().takePersistableUriPermission(muri,takeFlags);
 
                             sp.edit().putString(
                                     "FOLDER_URI" + (long) (permissionCount),
@@ -173,14 +165,34 @@ if(SDK_INT >= Build.VERSION_CODES.R) {
                     finishAffinity();
                 }
                 break;
-                
-            /**
-            --------------------------------------------------------------------------------------------------------
-            //Method untuk menerima data dari permission path khusus yang sudah diberikan
-            --------------------------------------------------------------------------------------------------------
-            **/
+                /**
+                --------------------------------------------------------------------------------------------------------
+                //Method untuk menerima data dari permission path khusus yang sudah diberikan
+                --------------------------------------------------------------------------------------------------------
+                **/
         }
     }
     
     
+```
+
+Berikut ini variable yang harus dibuat untuk bagia izin access Storage Android 11
+
+```java
+
+    private static final int SETTINGS_PERMISSION_ANDROID11 = 2000;
+    private static final int FOLDER_ANDROID11_PERMISSION = 43;
+    private final Intent p = new Intent(Intent.ACTION_GET_CONTENT);
+    private SharedPreferences cacheAkses;
+
+    private double permissionCount = 0;
+    private final Intent i = new Intent();
+    private SharedPreferences sp;
+
+
+    private DocumentFile mfile;
+    private DocumentFile mfile1;
+    private Uri muri;
+    private Uri uri2;
+    private Uri uriForDelete;
 ```
