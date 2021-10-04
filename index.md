@@ -175,3 +175,24 @@ if(SDK_INT >= Build.VERSION_CODES.R) {
     
     
 ```
+
+Berikut ini variable yang harus dibuat untuk bagia izin access Storage Android 11
+
+```java
+
+    private static final int SETTINGS_PERMISSION_ANDROID11 = 2000;
+    private static final int FOLDER_ANDROID11_PERMISSION = 43;
+    private final Intent p = new Intent(Intent.ACTION_GET_CONTENT);
+    private SharedPreferences cacheAkses;
+
+    private double permissionCount = 0;
+    private final Intent i = new Intent();
+    private SharedPreferences sp;
+
+
+    private DocumentFile mfile;
+    private DocumentFile mfile1;
+    private Uri muri;
+    private Uri uri2;
+    private Uri uriForDelete;
+```
