@@ -197,7 +197,7 @@ Berikut ini variable yang harus dibuat untuk bagia izin access Storage Android 1
     private Uri uriForDelete;
 ```
 
-## String URI khusus untuk Storage Access Android 11
+## Sample URI String khusus untuk Storage Access Android 11
 
 ```java
 @SuppressWarnings("SpellCheckingInspection")
